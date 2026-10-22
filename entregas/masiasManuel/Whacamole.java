@@ -19,7 +19,7 @@ public class Whacamole {
         for (int intentos = 1; intentos <= NUMERO_INTENTOS; intentos++) {
             int posicionMonigote = (int) (Math.random() * POSICIONES) + 1;
 
-            System.out.println("Adonde das el golpe? (1-16)?");
+            System.out.println("Adonde das el golpe? ("+posicionMonigote+")?");
             int posicionUsuario = scanner.nextInt();
 
             int posicionActual = 0;
@@ -27,7 +27,7 @@ public class Whacamole {
                 for (int columna = 1; columna <= NUMERO_COLUMNAS; columna++) {
                     posicionActual = posicionActual + 1;
 
-                    if (posicionUsuario == posicionMonigote) {
+                    if (posicionUsuario == posicionMonigote && posicionActual==posicionUsuario) {
                         System.out.print(CASILLA_CON_GOLPE_MONIGOTE);
                     } else if (posicionActual == posicionUsuario) {
                         System.out.print(CASILLA_CON_GOLPE);
