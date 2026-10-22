@@ -19,23 +19,30 @@ public class Whacamole {
         int numeroDeAciertos = 0;
 
         for (int intentos = 1; intentos <= NUMERO_INTENTOS; intentos++) {
-            int posicionMonigote = (int) (Math.random() * POSICIONES) + 1;
+            int posicionMonigote1 = (int) (Math.random() * POSICIONES) + 1;
+            int posicionMonigote2 = (int) (Math.random() * POSICIONES) + 1;
 
-            System.out.println("Adonde das el golpe? (" + posicionMonigote + ")?");
+            System.out.println("Adonde das el golpe? (" + posicionMonigote1 + ","+posicionMonigote2+")?");
             int posicionUsuario = scanner.nextInt();
 
             for (int posicion = 1; posicion <= POSICIONES; posicion++) {
 
-                if (posicionUsuario == posicionMonigote && posicion == posicionUsuario) {
-                    System.out.print(CASILLA_CON_GOLPE_MONIGOTE);
+                boolean hayUsuario = posicion == posicionUsuario;
+                boolean hayMonigote = posicion == posicionMonigote1 || posicion == posicionMonigote2;
+
+                boolean haAcertado = hayMonigote && hayUsuario;
+
+                String queImprimir = CASILLA;
+                if (haAcertado && posicion == posicionUsuario) {
+                    queImprimir = CASILLA_CON_GOLPE_MONIGOTE;
                     numeroDeAciertos++;
-                } else if (posicion == posicionUsuario) {
-                    System.out.print(CASILLA_CON_GOLPE);
-                } else if (posicion == posicionMonigote) {
-                    System.out.print(CASILLA_CON_MONIGOTE);
-                } else {
-                    System.out.print(CASILLA);
+                } else if (hayUsuario) {
+                    queImprimir = CASILLA_CON_GOLPE;
+                } else if (hayMonigote) {
+                    queImprimir = CASILLA_CON_MONIGOTE;
                 }
+                System.out.print(queImprimir);
+
                 if (posicion % tamañoLado == 0) {
                     System.out.println();
                 }
