@@ -1,4 +1,4 @@
-<img width="1280" height="800" alt="image" src="https://github.com/user-attachments/assets/1a9d4599-68b8-4e14-abc1-277473c1a593" /># Predicción
+# Predicción
 
 Caso: debe pagar con 232 € y paga con 200 €
 
